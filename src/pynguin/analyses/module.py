@@ -1369,6 +1369,8 @@ def __analyse_included_functions(
         if current in seen_functions:
             continue
         seen_functions.add(current)
+        if current.__module__ is None or type(current.__module__) == type(None):
+            continue
         __analyse_function(
             func_name=current.__qualname__,
             func=current,
